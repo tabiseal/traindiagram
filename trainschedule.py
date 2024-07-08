@@ -17,25 +17,24 @@ class TrainSchedule:
             station_index = self.stations.index(station_name) + 1
             line[station_name] = (arrival_time, departure_time)
             if departure_time:
-                # Draw stop duration with red line
                 self.ax.plot([arrival_time, departure_time], [station_index, station_index], 'r-')
             self.connect_stations(line_name)
 
     def connect_stations(self, line_name):
-        line = self.train_lines.get(line_name)
-        sorted_stations = sorted((station, times) for station, times in line.items() if times)
-        last_time = None  # To store the last time we need to connect from
+        line = self.train_lines[line_name]
+        # Sort stations by arrival time
+        sorted_stations = sorted(line.items(), key=lambda x: x[1][0])
+        last_time = None
+        last_position = None
         for station, times in sorted_stations:
             arrival_time, departure_time = times
             current_time = departure_time if departure_time else arrival_time
-            if last_time is not None:
+            current_position = self.stations.index(station) + 1
+            if last_time is not None and last_position is not None:
                 # Draw travel line with blue line
-                self.ax.plot([last_time, arrival_time], 
-                             [self.stations.index(previous_station) + 1, self.stations.index(station) + 1], 'b-')
+                self.ax.plot([last_time, arrival_time], [last_position, current_position], 'b-')
             last_time = current_time
-            previous_station = station
+            last_position = current_position
 
     def show(self):
         plt.show()
-
-
