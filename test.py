@@ -1,3 +1,5 @@
+from trainschedule import TrainSchedule
+
 train_lines = ["Train A", "Train B", "Train C"]
 stations = ["Utsumomiya", "Koganei", "Omiya", "Ueno", "Tokyo","Shinagawa"]
 
@@ -15,3 +17,5 @@ schedule.add_station_time("Train B", "Shinagawa", 45)
 # schedule.add_station_time("Train C", "Koganei", 5, 7)
 # schedule.add_station_time("Train C", "Omiya", 15,17)
 # schedule.add_station_time("Train C", "Tokyo", 20)  # 无出发时间
+
+schedule.show()
