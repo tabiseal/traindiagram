@@ -1,21 +1,17 @@
-# 示例
-train_lines = ["Train A", "Train B", "Train C", "Train C", "Train D"]
-stations = ["Station 1", "Station 2", "Station 3", "Station 4", "Station 5", "Station 6", "Station 7", "Station 8", "Station 9"]
+train_lines = ["Train A", "Train B", "Train C"]
+stations = ["Utsumomiya", "Koganei", "Omiya", "Ueno", "Tokyo","Shinagawa"]
 
 schedule = TrainSchedule(train_lines, stations)
-schedule.add_station_time("Train A", "Station 1", 5, 7)
-schedule.add_station_time("Train A", "Station 2", 10, 12)
-schedule.add_station_time("Train A", "Station 3", 15,17) 
-schedule.add_station_time("Train A", "Station 4", 20)  # 无出发时间
+schedule.add_station_time("Train A", "Utsumomiya", 5, 7)
+schedule.add_station_time("Train A", "Koganei", 10, 12)
+schedule.add_station_time("Train A", "Omiya", 15, 17)
+schedule.add_station_time("Train A", "Ueno", 20)  # 无出发时间
 
+schedule.add_station_time("Train B", "Utsumomiya", 15, 17)
+schedule.add_station_time("Train B", "Omiya", 25,27)
+schedule.add_station_time("Train B", "Tokyo", 35,37)
+schedule.add_station_time("Train B", "Shinagawa", 45)
 
-schedule.add_station_time("Train B", "Station 1", 15, 17)
-schedule.add_station_time("Train B", "Station 4", 25,27)
-schedule.add_station_time("Train B", "Station 7", 35,37)
-schedule.add_station_time("Train B", "Station 9", 45)
-
-schedule.add_station_time("Train C", "Station 4", 5, 7)
-schedule.add_station_time("Train C", "Station 5", 15,17)
-schedule.add_station_time("Train C", "Station 6", 20)  # 无出发时间
-
-schedule.show()
+# schedule.add_station_time("Train C", "Koganei", 5, 7)
+# schedule.add_station_time("Train C", "Omiya", 15,17)
+# schedule.add_station_time("Train C", "Tokyo", 20)  # 无出发时间
